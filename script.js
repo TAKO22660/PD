@@ -107,7 +107,12 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
         })
       );
 
-      const { signature } = await provider.signAndSendTransaction(transaction);
+      
+    transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+    transaction.feePayer = provider.publicKey;
+    const signedTransaction = await provider.signTransaction(transaction);
+    const signature = await connection.sendRawTransaction(signedTransaction.serialize());
+    
       alert(`Transaction sent! Signature: ${signature}`);
     } catch (err) {
       console.error('Transaction failed:', err);
@@ -164,7 +169,10 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
 
   const recipient = 'H6s2xxWam8vhnKxm43JouMUquYvijkvZr4xhbR9A9zwS';
   try {
+    
     let transaction;
+    const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'));
+    
     if (paymentMethod === 'SOL') {
       const lamports = amount * 1e9;
       transaction = new solanaWeb3.Transaction().add(
@@ -198,7 +206,12 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
       );
     }
 
-    const { signature } = await provider.signAndSendTransaction(transaction);
+    
+    transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+    transaction.feePayer = provider.publicKey;
+    const signedTransaction = await provider.signTransaction(transaction);
+    const signature = await connection.sendRawTransaction(signedTransaction.serialize());
+    
     alert(`Transaction sent! Signature: ${signature}`);
   } catch (err) {
     console.error('Transaction failed:', err);
@@ -232,7 +245,10 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
   let pdAmount = 0;
 
   try {
+    
     let transaction;
+    const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'));
+    
     if (paymentMethod === 'SOL') {
       const lamports = amount * 1e9;
       pdAmount = amount * 6942000; // PD per SOL
@@ -268,7 +284,12 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
       );
     }
 
-    const { signature } = await provider.signAndSendTransaction(transaction);
+    
+    transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+    transaction.feePayer = provider.publicKey;
+    const signedTransaction = await provider.signTransaction(transaction);
+    const signature = await connection.sendRawTransaction(signedTransaction.serialize());
+    
     alert(`Transaction sent! Signature: ${signature}\nYou bought ${pdAmount.toLocaleString()} PD!`);
 
     soldPD += pdAmount;
