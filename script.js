@@ -171,7 +171,7 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
   try {
     
     let transaction;
-    const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'));
+    const connection = provider.connection;
     
     if (paymentMethod === 'SOL') {
       const lamports = amount * 1e9;
@@ -247,7 +247,7 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
   try {
     
     let transaction;
-    const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'));
+    const connection = provider.connection;
     
     if (paymentMethod === 'SOL') {
       const lamports = amount * 1e9;
