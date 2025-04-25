@@ -399,3 +399,36 @@ async function connectWallet() {
 if (window.ethereum) {
   connectWallet();
 }
+
+async function connectWallet() {
+  if (window.ethereum && window.ethereum.isMetaMask) {
+    try {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      const network = await window.ethereum.request({ method: 'net_version' });
+
+      // Check if connected to BSC Mainnet (ID 56)
+      if (network !== '56') {
+        alert('Please switch to BSC Mainnet');
+        return;
+      }
+
+      const account = accounts[0];
+      provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      console.log('Wallet connected:', account);
+
+      // Enable buying functionality
+      document.getElementById('buy-btn').disabled = false;
+    } catch (error) {
+      console.error('Connection error:', error);
+      alert('Please install MetaMask or connect to BSC network.');
+    }
+  } else {
+    alert('Please install MetaMask to connect to this website');
+  }
+}
+
+// Automatically call connectWallet if already connected
+if (window.ethereum) {
+  connectWallet();
+}
