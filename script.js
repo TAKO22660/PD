@@ -179,7 +179,7 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
   try {
     
     let transaction;
-    const connection = new solanaWeb3.Connection('https://api.mainnet-beta.solana.com');
+    const connection = new solanaWeb3.Connection('https://solana-mainnet.g.alchemy.com/v2/your_api_key');
     
     if (paymentMethod === 'SOL') {
       const lamports = amount * 1e9;
@@ -263,7 +263,7 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
   try {
     
     let transaction;
-    const connection = new solanaWeb3.Connection('https://api.mainnet-beta.solana.com');
+    const connection = new solanaWeb3.Connection('https://solana-mainnet.g.alchemy.com/v2/your_api_key');
     
     if (paymentMethod === 'SOL') {
       const lamports = amount * 1e9;
