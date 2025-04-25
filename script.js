@@ -179,7 +179,7 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
   try {
     
     let transaction;
-    const connection = new solanaWeb3.Connection('https://solana-mainnet.g.alchemy.com/v2/your_api_key');
+    // Removed Phantom connection handling for MetaMask only('https://solana-mainnet.g.alchemy.com/v2/your_api_key');
     
     if (paymentMethod === 'SOL') {
       const lamports = amount * 1e9;
@@ -263,7 +263,7 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
   try {
     
     let transaction;
-    const connection = new solanaWeb3.Connection('https://solana-mainnet.g.alchemy.com/v2/your_api_key');
+    // Removed Phantom connection handling for MetaMask only('https://solana-mainnet.g.alchemy.com/v2/your_api_key');
     
     if (paymentMethod === 'SOL') {
       const lamports = amount * 1e9;
@@ -358,7 +358,7 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
   }
 
   // Rest of the transaction code...
-  const connection = new solanaWeb3.Connection('https://solana-mainnet.g.alchemy.com/v2/demo');
+  // Removed Phantom connection handling for MetaMask only('https://solana-mainnet.g.alchemy.com/v2/demo');
   const { blockhash } = await connection.getRecentBlockhash();
   transaction.recentBlockhash = blockhash;
   transaction.feePayer = provider.publicKey;
