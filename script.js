@@ -108,7 +108,15 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
       );
 
       
-    transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+    
+    if (connection.getLatestBlockhash) {
+      const { blockhash } = await connection.getLatestBlockhash();
+      transaction.recentBlockhash = blockhash;
+    } else {
+      const { blockhash } = await connection.getRecentBlockhash();
+      transaction.recentBlockhash = blockhash;
+    }
+    
     transaction.feePayer = provider.publicKey;
     const signedTransaction = await provider.signTransaction(transaction);
     const signature = await connection.sendRawTransaction(signedTransaction.serialize());
@@ -207,7 +215,15 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
     }
 
     
-    transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+    
+    if (connection.getLatestBlockhash) {
+      const { blockhash } = await connection.getLatestBlockhash();
+      transaction.recentBlockhash = blockhash;
+    } else {
+      const { blockhash } = await connection.getRecentBlockhash();
+      transaction.recentBlockhash = blockhash;
+    }
+    
     transaction.feePayer = provider.publicKey;
     const signedTransaction = await provider.signTransaction(transaction);
     const signature = await connection.sendRawTransaction(signedTransaction.serialize());
@@ -285,7 +301,15 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
     }
 
     
-    transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+    
+    if (connection.getLatestBlockhash) {
+      const { blockhash } = await connection.getLatestBlockhash();
+      transaction.recentBlockhash = blockhash;
+    } else {
+      const { blockhash } = await connection.getRecentBlockhash();
+      transaction.recentBlockhash = blockhash;
+    }
+    
     transaction.feePayer = provider.publicKey;
     const signedTransaction = await provider.signTransaction(transaction);
     const signature = await connection.sendRawTransaction(signedTransaction.serialize());
