@@ -109,7 +109,7 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
 
       
     
-    if (connection.getLatestBlockhash) {
+    if (connection.getLatestBlockhash !== undefined) {
       const { blockhash } = await connection.getLatestBlockhash();
       transaction.recentBlockhash = blockhash;
     } else {
@@ -179,7 +179,7 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
   try {
     
     let transaction;
-    const connection = provider.connection;
+    const connection = new solanaWeb3.Connection('https://api.mainnet-beta.solana.com');
     
     if (paymentMethod === 'SOL') {
       const lamports = amount * 1e9;
@@ -216,7 +216,7 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
 
     
     
-    if (connection.getLatestBlockhash) {
+    if (connection.getLatestBlockhash !== undefined) {
       const { blockhash } = await connection.getLatestBlockhash();
       transaction.recentBlockhash = blockhash;
     } else {
@@ -263,7 +263,7 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
   try {
     
     let transaction;
-    const connection = provider.connection;
+    const connection = new solanaWeb3.Connection('https://api.mainnet-beta.solana.com');
     
     if (paymentMethod === 'SOL') {
       const lamports = amount * 1e9;
@@ -302,7 +302,7 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
 
     
     
-    if (connection.getLatestBlockhash) {
+    if (connection.getLatestBlockhash !== undefined) {
       const { blockhash } = await connection.getLatestBlockhash();
       transaction.recentBlockhash = blockhash;
     } else {
