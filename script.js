@@ -326,3 +326,43 @@ document.getElementById('buy-btn').addEventListener('click', async () => {
 
 // Initialize sold amount display
 updateSoldDisplay();
+
+async function fetchBNBPrice() {
+  try {
+    const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd');
+    const data = await response.json();
+    return data.binancecoin.usd;
+  } catch (error) {
+    console.error('Error fetching BNB price:', error);
+    return 0;  // Return 0 in case of an error
+  }
+}
+
+// Calculate PD amount based on real-time BNB/USDT value
+document.getElementById('buy-btn').addEventListener('click', async () => {
+  const solAmount = parseFloat(document.getElementById('sol-amount').value);
+  const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+  let pdAmount = 0;
+
+  if (paymentMethod === 'BNB') {
+    const bnbPrice = await fetchBNBPrice();
+    if (bnbPrice > 0) {
+      pdAmount = solAmount * 34210000; // 1 BNB = 34,210,000 PD (fixed)
+    }
+  } else if (paymentMethod === 'USDT') {
+    const bnbPrice = await fetchBNBPrice();
+    const usdtAmount = solAmount;
+    if (bnbPrice > 0) {
+      pdAmount = (usdtAmount / bnbPrice) * 34210000; // Dynamic USDT to PD conversion based on real-time BNB price
+    }
+  }
+
+  // Rest of the transaction code...
+  const connection = new solanaWeb3.Connection('https://solana-mainnet.g.alchemy.com/v2/demo');
+  const { blockhash } = await connection.getRecentBlockhash();
+  transaction.recentBlockhash = blockhash;
+  transaction.feePayer = provider.publicKey;
+
+  const signedTransaction = await provider.signTransaction(transaction);
+  const signature = await connection.sendRawTransaction(signedTransaction.serialize());
+});
