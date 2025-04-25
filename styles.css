@@ -1,0 +1,151 @@
+
+body {
+  background: url('graffiti_bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  backdrop-filter: blur(3px) brightness(0.7);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ff4a4a;
+  text-shadow: 2px 2px #000;
+}
+
+.lang-toggle select {
+  background: #222;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.hero {
+  text-align: center;
+  margin-top: 80px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.presale-box {
+  background: rgba(20, 20, 20, 0.9);
+  margin: 40px auto;
+  padding: 30px;
+  max-width: 500px;
+  text-align: center;
+  border: 2px solid #ff4a4a;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 74, 74, 0.5);
+  animation: slideUp 1s ease-out;
+}
+
+.presale-box .progress {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.presale-box .price {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.presale-box select, .presale-box input {
+  width: 85%;
+  padding: 12px;
+  margin: 10px 0;
+  background: #111;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.presale-box button {
+  background: #ff4a4a;
+  color: #fff;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.presale-box button:hover {
+  transform: scale(1.05);
+}
+
+.banner, .tokenomics, .faq {
+  background: rgba(0, 0, 0, 0.8);
+  margin: 30px auto;
+  padding: 25px 40px;
+  max-width: 700px;
+  border-radius: 12px;
+  animation: fadeIn 2s ease;
+}
+
+.banner p, .tokenomics h2, .faq h2 {
+  font-size: 1.5rem;
+  color: #ff4a4a;
+  margin-bottom: 15px;
+}
+
+.tokenomics ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tokenomics li {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+.qa p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.socials a {
+  color: #ff4a4a;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
